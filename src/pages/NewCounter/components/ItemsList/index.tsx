@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
-import { CounterItemsListProps } from '@/pages/NewCounter/interfaces'
+import { useCounterContext } from '@/pages/NewCounter/hooks'
 
-const CounterItemList: FC<CounterItemsListProps> = () => {
+const CounterItemList: FC = () => {
+  const { counterState } = useCounterContext()
+
   return (
     <View>
-      
+      {counterState.itemsCounter.map((_, i) => <Text>{i}</Text>)}
     </View>
   )
 }

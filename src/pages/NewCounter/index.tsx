@@ -1,17 +1,15 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
 
-import CounterItemList from './components/ItemsList'
-import { useCounterSetUp } from './hooks'
+import NewCounterScreenView from '@/pages/NewCounter/components/NewCounterScreenView'
+import { CounterItemsProvider } from '@/pages/NewCounter/context'
 import { NewCounterScreenProps } from '@/interfaces/navigator'
 
 const NewCounterScreen: FC<NewCounterScreenProps> = () => {
-  const { counterList } = useCounterSetUp()
 
   return (
-    <View>
-      <CounterItemList counterItemsList={counterList} />
-    </View>
+    <CounterItemsProvider>
+      <NewCounterScreenView />
+    </CounterItemsProvider>
   )
 }
 

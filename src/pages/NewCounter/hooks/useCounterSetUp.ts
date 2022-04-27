@@ -1,22 +1,20 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 
-import { CountItem } from '../interfaces'
+import { CounterItemsContext } from '../context'
+import { CountItem, NewCounterTypes } from '../interfaces'
 
-export const useCounterSetUp = () => {
-  const [counterList, setCounterList] = useState<CountItem[]>([])
+export const useCounterContext = () => {
+  const context = useContext(CounterItemsContext)
+  if (context === null) throw new Error('useCounterContext must be used within a CounterItemsProvider')
 
-  const addNewItem = (item: CountItem) => {
-    setCounterList(prevList => [...prevList, item])
-  }
+  const [counterState, dispatch] = context
 
-  const removeItem = (itemId: string) => {
-    const updatedCounterList: CountItem[] = counterList.filter(({ id }) => id === itemId)
-    setCounterList(updatedCounterList)
+  const addNewCounterItem = (counterItem: CountItem) => {
+    dispatch({ type: NewCounterTypes.ADD_ITEM, payload: counterItem })
   }
 
   return {
-    counterList,
-    addNewItem,
-    removeItem,
+    counterState,
+    addNewCounterItem
   }
 }
