@@ -21,7 +21,7 @@ const NewCounterScreenView = () => {
     <>
       <View style={styles.container}>
         <CounterItemList />
-        <PrimaryButton onPress={openNewEntryForm}>
+        <PrimaryButton style={styles.addButton} onPress={openNewEntryForm}>
           +
         </PrimaryButton>
         <View style={styles.startCountingButton}>
@@ -31,7 +31,7 @@ const NewCounterScreenView = () => {
         </View>
       </View>
         <BottomSheet sheetRef={sheetRef}>
-          <KeyboardAvoidingView contentContainerStyle={{ position: 'relative', top: 50 }} behavior="position">
+          <KeyboardAvoidingView contentContainerStyle={{ position: 'relative', top: 60 }} behavior="position">
             <NewItemForm snapTo={snapTo} />
           </KeyboardAvoidingView>
         </BottomSheet>

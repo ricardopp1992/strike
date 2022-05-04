@@ -7,6 +7,9 @@ export default StyleSheet.create({
     paddingHorizontal: '3%',
     alignItems: 'center',
   },
+  addButton: {
+    marginTop: '10%',
+  },
   startCountingButton: {
     position: 'absolute',
     bottom: '10%'
