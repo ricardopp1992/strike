@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { KeyboardAvoidingView, View } from 'react-native'
+import { KeyboardAvoidingView, Text, View } from 'react-native'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
 import { PrimaryButton } from '@/components/Buttons'
@@ -20,6 +20,7 @@ const NewCounterScreenView = () => {
   return (
     <>
       <View style={styles.container}>
+        <Text style={styles.title}>Counter Items</Text>
         <CounterItemList />
         <PrimaryButton style={styles.addButton} onPress={openNewEntryForm}>
           +
@@ -30,11 +31,11 @@ const NewCounterScreenView = () => {
           </PrimaryButton>
         </View>
       </View>
-        <BottomSheet sheetRef={sheetRef}>
-          <KeyboardAvoidingView contentContainerStyle={{ position: 'relative', top: 60 }} behavior="position">
-            <NewItemForm snapTo={snapTo} />
-          </KeyboardAvoidingView>
-        </BottomSheet>
+      <BottomSheet sheetRef={sheetRef}>
+        <KeyboardAvoidingView contentContainerStyle={{ position: 'relative', top: 60 }} behavior="position">
+          <NewItemForm snapTo={snapTo} />
+        </KeyboardAvoidingView>
+      </BottomSheet>
     </>
   )
 }

@@ -1,3 +1,4 @@
+import { normalTheme } from '@/theme'
 import { StyleSheet } from 'react-native'
 
 const BORDER_RADIUS = 50
@@ -28,6 +29,10 @@ export default StyleSheet.create({
   icon: {
     padding: 4,
     fontSize: 40,
+  },
+  iconSelected: {
+    backgroundColor: normalTheme.selectedBackground,
+    borderRadius: 10,
   },
   saveButton: {
     marginVertical: '5%',

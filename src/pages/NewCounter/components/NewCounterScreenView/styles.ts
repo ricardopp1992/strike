@@ -7,6 +7,11 @@ export default StyleSheet.create({
     paddingHorizontal: '3%',
     alignItems: 'center',
   },
+  title: {
+    fontSize: 20,
+    fontWeight: '500',
+    marginBottom: '5%'
+  },
   addButton: {
     marginTop: '10%',
   },

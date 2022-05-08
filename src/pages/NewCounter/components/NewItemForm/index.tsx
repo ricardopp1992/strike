@@ -8,12 +8,13 @@ import { NewItemFromProps } from '@/pages/NewCounter/interfaces'
 import { useCounterContext } from '@/pages/NewCounter/hooks'
 import ioniconsList from './listIcons'
 import styles from './styles'
+import { useToastContext } from '@/context/toastContext'
 
 const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
   const [itemName, setItemName] = useState('')
   const [itemIcon, setItemIcon] = useState('')
-  const [showErrorMessage, setShowErrorMessage] = useState(false)
   const { addNewCounterItem } = useCounterContext()
+  const { setErrorToast } = useToastContext()
 
   const onChangeTextInput = (text: string) => setItemName(text)
 
@@ -21,7 +22,7 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
 
   const closeNewEntryForm = () => {
     if (!itemName || !itemIcon) {
-      setShowErrorMessage(true)
+      setErrorToast('You should select both Name and Icon')
       return
     }
 
@@ -35,13 +36,6 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
     setItemIcon('')
     setItemName('')
   }
-
-  useEffect(() => {
-    const areBothFilled = itemIcon && itemName
-    if (showErrorMessage && areBothFilled) {
-      setShowErrorMessage(false)
-    }
-  }, [itemName, itemIcon])
 
   return (
     <View style={styles.container}>
@@ -62,8 +56,9 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
           data={ioniconsList}
           renderItem={({ item }) =>
             <Icon
+              name={item}
               onPress={() => onSelectIcon(item)}
-              style={styles.icon} name={item}
+              style={[styles.icon, item === itemIcon && styles.iconSelected]}
             />
           }
         />
@@ -71,13 +66,6 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
       <PrimaryButton style={styles.saveButton} onPress={closeNewEntryForm}>
         Save
       </PrimaryButton>
-      {
-        showErrorMessage &&
-        <>
-          {!Boolean(itemName) && <Text style={styles.errorMessage} >Please provide a name</Text>}
-          {!Boolean(itemIcon) && <Text style={styles.errorMessage} >Please provide an icon</Text>}
-        </>
-      }
     </View>
   )
 }
