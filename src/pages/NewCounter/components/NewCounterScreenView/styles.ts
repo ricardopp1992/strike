@@ -1,3 +1,4 @@
+import { normalTheme } from "@/theme";
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
@@ -11,9 +12,6 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     marginBottom: '5%'
-  },
-  addButton: {
-    marginTop: '10%',
   },
   startCountingButton: {
     position: 'absolute',

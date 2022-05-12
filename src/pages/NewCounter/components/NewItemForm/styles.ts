@@ -32,13 +32,10 @@ export default StyleSheet.create({
   },
   iconSelected: {
     backgroundColor: normalTheme.selectedBackground,
-    borderRadius: 10,
+    borderRadius: normalTheme.borderRadius,
   },
   saveButton: {
     marginVertical: '5%',
     alignSelf: 'center',
   },
-  errorMessage: {
-    color: 'red'
-  }
 })

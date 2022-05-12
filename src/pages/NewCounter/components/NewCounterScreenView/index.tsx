@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { FC, useRef } from 'react'
 import { KeyboardAvoidingView, Text, View } from 'react-native'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
@@ -7,9 +7,12 @@ import { BottomSheet } from '@/components/BottomSheet'
 import CounterItemList from '@/pages/NewCounter/components/ItemsList'
 import NewItemForm from '@/pages/NewCounter/components/NewItemForm'
 import styles from './styles'
+import { CounterStackScreens, NewCounterScreenProps } from '@/interfaces'
+import { useCounterContext } from '../../hooks'
 
-const NewCounterScreenView = () => {
+const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   const sheetRef = useRef<BottomSheetBehavior>(null)
+  const { counterState } = useCounterContext()
 
   const openNewEntryForm = () => sheetRef.current?.snapTo(1)
 
@@ -17,16 +20,20 @@ const NewCounterScreenView = () => {
     sheetRef.current?.snapTo(snap)
   }
 
+  const onNavigateToCounter = () => {
+    navigation.navigate(CounterStackScreens.COUNTER_SCREEN, counterState.itemsCounter)
+  }
+
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Counter Items</Text>
         <CounterItemList />
-        <PrimaryButton style={styles.addButton} onPress={openNewEntryForm}>
+        <PrimaryButton onPress={openNewEntryForm}>
           +
         </PrimaryButton>
         <View style={styles.startCountingButton}>
-          <PrimaryButton onPress={() => { }}>
+          <PrimaryButton onPress={onNavigateToCounter}>
             Start Counting
           </PrimaryButton>
         </View>

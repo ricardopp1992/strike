@@ -5,12 +5,12 @@ import { CounterItemsProvider } from '@/pages/NewCounter/context'
 import { NewCounterScreenProps } from '@/interfaces/navigator.interface'
 import ScreenWrapper from '@/components/ScreenWrapper'
 
-const NewCounterScreen: FC<NewCounterScreenProps> = () => {
+const NewCounterScreen: FC<NewCounterScreenProps> = (props) => {
 
   return (
     <ScreenWrapper>
       <CounterItemsProvider>
-        <NewCounterScreenView />
+        <NewCounterScreenView {...props} />
       </CounterItemsProvider>
     </ScreenWrapper>
   )
