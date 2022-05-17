@@ -23,6 +23,5 @@ const primaryButtonStyles = StyleSheet.create({
     borderRadius: normalTheme.borderRadius,
     paddingVertical: 10,
     paddingHorizontal: 15,
-    marginTop: '10%',
   },
 })

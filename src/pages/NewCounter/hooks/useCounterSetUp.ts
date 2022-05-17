@@ -1,7 +1,8 @@
 import { useContext } from 'react'
 
 import { CounterItemsContext } from '../context'
-import { CountItem, NewCounterTypes } from '../interfaces'
+import { NewCounterTypes } from '../interfaces'
+import { CountItem } from '@/interfaces'
 
 export const useCounterContext = () => {
   const context = useContext(CounterItemsContext)

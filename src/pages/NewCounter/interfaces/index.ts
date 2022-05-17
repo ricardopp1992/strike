@@ -1,8 +1,4 @@
-export type CountItem = {
-  id: string
-  itemName: string
-  itemIcon: string
-}
+import { CountItem } from "@/interfaces"
 
 export type CounterItemsStore = [NewCounterSate, React.Dispatch<PayloadNewCounterAction>]
 

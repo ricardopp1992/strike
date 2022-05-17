@@ -17,3 +17,13 @@ export type IToastContext = [
   IToast,
   Dispatch<IToast>
 ]
+
+export type CountItem = {
+  id: string
+  itemName: string
+  itemIcon: string
+}
+
+export interface ICounterItemsValues extends CountItem {
+  value: number;
+}

@@ -1,18 +1,34 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Text, View } from 'react-native'
 
-import { CounterScreenProps } from '@/interfaces'
-import { CountItem } from '@/pages/NewCounter/interfaces'
+import { CounterScreenProps, CountItem } from '@/interfaces'
+import ItemCounter from '../ItemCounter'
+import { useItemsCounterContext } from '../../hooks'
+import { ScrollView } from 'react-native-gesture-handler'
+import styles from './styles'
 
 const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
   const items: CountItem[] = new Array(...route.params)
+  const { countItems, initItems } = useItemsCounterContext()
+
+  useEffect(() => {
+    initItems(items)
+  }, [])
+  
 
   return (
-    <View>
+    <ScrollView style={styles.container}>
       {
-        items.map(({ itemName }) => <Text>{itemName}</Text>)
+        countItems.items.map(({ itemName, itemIcon, value }) =>
+          <ItemCounter
+            key={`${itemName}-${itemIcon}`}
+            name={itemName}
+            icon={itemIcon}
+            value={value}
+          />
+        )
       }
-    </View>
+    </ScrollView>
   )
 }
 
