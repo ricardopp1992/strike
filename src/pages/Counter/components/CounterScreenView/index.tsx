@@ -19,9 +19,10 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
   return (
     <ScrollView style={styles.container}>
       {
-        countItems.items.map(({ itemName, itemIcon, value }) =>
+        countItems.items.map(({ itemName, itemIcon, value, id }) =>
           <ItemCounter
             key={`${itemName}-${itemIcon}`}
+            id={id}
             name={itemName}
             icon={itemIcon}
             value={value}

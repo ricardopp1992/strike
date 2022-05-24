@@ -7,8 +7,17 @@ import { useItemsCounterContext } from '../../hooks'
 import { IItemCounterProps } from '../../interfaces'
 import styles from './styles'
 
-const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value }) => {
-  const {} = useItemsCounterContext()
+const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value, id }) => {
+  const { addCount, decreaseCount } = useItemsCounterContext()
+  const enableDecrease = value > 0 || undefined
+
+  const handleAddClick = () => {
+    addCount(id)
+  }
+
+  const handleDecreaseClick = () => {
+    decreaseCount(id)
+  }
 
   return (
     <View style={styles.container}>
@@ -17,9 +26,16 @@ const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value }) => {
         <Text style={styles.name}>{name}</Text>
       </View>
       <View style={styles.controls}>
-        <PrimaryButton style={styles.buttons}>+</PrimaryButton>
+        <PrimaryButton onPress={handleAddClick} style={styles.buttons}>+</PrimaryButton>
         <Text style={styles.value}>{value}</Text>
-        <PrimaryButton style={styles.buttons}>-</PrimaryButton>
+        <PrimaryButton
+          disabled={!enableDecrease}
+          onPress={enableDecrease && handleDecreaseClick}
+          textStyle={[!enableDecrease && styles.disableText]}
+          style={[styles.buttons, !enableDecrease && styles.disableButton]}
+        >
+          -
+        </PrimaryButton>
       </View>
     </View>
   )

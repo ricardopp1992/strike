@@ -42,6 +42,12 @@ export default StyleSheet.create({
     width: 80,
     alignItems: 'center',
   },
+  disableButton: {
+    borderColor: normalTheme.disableColor,
+  },
+  disableText: {
+    color: normalTheme.disableColor
+  },
   value: {
     fontSize,
     marginHorizontal: '10%',

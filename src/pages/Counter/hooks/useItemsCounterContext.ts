@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 import { CountItem } from "@/interfaces"
 import { ItemsCounterContext } from "../context"
@@ -14,8 +14,18 @@ export const useItemsCounterContext = () => {
     dispatch({ type: ItemsCounterTypes.SET_ITEMS, payload: items })
   }
 
+  const addCount = (id: string) => {
+    dispatch({ type: ItemsCounterTypes.ADD, payload: id })
+  }
+
+  const decreaseCount = (id: string) => {
+    dispatch({ type: ItemsCounterTypes.DECREASE, payload: id })
+  }
+
   return {
     countItems,
     initItems,
+    addCount,
+    decreaseCount,
   }
 }

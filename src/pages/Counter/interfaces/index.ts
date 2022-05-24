@@ -1,6 +1,7 @@
-import { CountItem, ICounterItemsValues } from "@/interfaces"
+import { CountItem } from "@/interfaces"
 
 export interface IItemCounterProps {
+  id: string
   name: string
   icon: string
   value: number
@@ -8,6 +9,8 @@ export interface IItemCounterProps {
 
 export enum ItemsCounterTypes {
   SET_ITEMS,
+  ADD,
+  DECREASE,
 }
 
 export type SetItemsAction = {
@@ -15,4 +18,14 @@ export type SetItemsAction = {
   payload: CountItem[]
 }
 
-export type ItemsCounterActions = SetItemsAction
+export type AddItemsAction = {
+  type: ItemsCounterTypes.ADD,
+  payload: string
+}
+
+export type RemoveItemsAction = {
+  type: ItemsCounterTypes.DECREASE,
+  payload: string
+}
+
+export type ItemsCounterActions = SetItemsAction | AddItemsAction | RemoveItemsAction
