@@ -10,7 +10,8 @@ import {
 export const CounterItemsContext = createContext<CounterItemsStore | null>(null)
 
 const initialState = {
-  itemsCounter: []
+  itemsCounter: [],
+  itemToEditId: ''
 }
 
 function reducerCounter(state: NewCounterSate, action: PayloadNewCounterAction): NewCounterSate {
@@ -19,6 +20,15 @@ function reducerCounter(state: NewCounterSate, action: PayloadNewCounterAction):
       return { ...state, itemsCounter: [...state.itemsCounter, action.payload] }
     case NewCounterTypes.REMOVE_ITEM:
       return { ...state, itemsCounter: state.itemsCounter.filter(({ id }) => id !== action.payload)}
+    case NewCounterTypes.EDIT_ITEM:
+      const itemsCounter = state.itemsCounter.map(item => {
+        if (item.id === action.payload.id) return action.payload
+        return item
+      })
+
+      return { ...state, itemsCounter }
+    case NewCounterTypes.SET_ITEM_TO_EDIT_ID:
+      return { ...state, itemToEditId: action.payload }
     default:
       throw new Error('reducer case not implemented')
   }

@@ -31,8 +31,7 @@ const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value, id }) => {
         <PrimaryButton
           disabled={!enableDecrease}
           onPress={enableDecrease && handleDecreaseClick}
-          textStyle={[!enableDecrease && styles.disableText]}
-          style={[styles.buttons, !enableDecrease && styles.disableButton]}
+          style={styles.buttons}
         >
           -
         </PrimaryButton>

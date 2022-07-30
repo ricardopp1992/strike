@@ -5,7 +5,7 @@ const fontSize = 25
 
 export default StyleSheet.create({
   container: {
-    marginVertical: '5%',
+    marginTop: '4%',
     paddingVertical: '3%',
     marginHorizontal: '2%',
     paddingHorizontal: '5%',
@@ -41,12 +41,6 @@ export default StyleSheet.create({
   buttons: {
     width: 80,
     alignItems: 'center',
-  },
-  disableButton: {
-    borderColor: normalTheme.disableColor,
-  },
-  disableText: {
-    color: normalTheme.disableColor
   },
   value: {
     fontSize,

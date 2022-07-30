@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { Text, TextInput, View, Keyboard } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -9,12 +9,19 @@ import { useCounterContext } from '@/pages/NewCounter/hooks'
 import ioniconsList from './listIcons'
 import styles from './styles'
 import { useToastContext } from '@/context/toastContext'
+import { CountItem } from '@/interfaces'
 
 const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
   const [itemName, setItemName] = useState('')
   const [itemIcon, setItemIcon] = useState('')
-  const { addNewCounterItem } = useCounterContext()
+  const {
+    addNewCounterItem,
+    editCounterItem,
+    counterState,
+    setCounterItemId
+  } = useCounterContext()
   const { setErrorToast } = useToastContext()
+  const { itemsCounter, itemToEditId } = counterState
 
   const onChangeTextInput = (text: string) => setItemName(text)
 
@@ -26,16 +33,36 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
       return
     }
 
-    addNewCounterItem({ id: '1234', itemName, itemIcon })
+    if (itemToEditId) {
+      const updatedItem: CountItem = { id: itemToEditId, itemName, itemIcon }
+      editCounterItem(updatedItem)
+    } else {
+      const id = new Date().getTime().toString()
+      addNewCounterItem({ id, itemName, itemIcon })
+    }
+
     Keyboard.dismiss()
     snapTo(0)
     cleanForm()
   }
-  
+
   const cleanForm = () => {
     setItemIcon('')
     setItemName('')
+    setCounterItemId(undefined)
   }
+
+  useEffect(() => {
+    const itemToEdit = itemsCounter
+      .find(({ id }) => id === itemToEditId)
+
+    console.log(itemToEdit, itemToEditId);
+
+    if (typeof itemToEditId !== 'undefined' && itemToEdit) {
+      setItemIcon(itemToEdit.itemIcon)
+      setItemName(itemToEdit.itemName)
+    }
+  }, [itemToEditId, itemsCounter])
 
   return (
     <View style={styles.container}>

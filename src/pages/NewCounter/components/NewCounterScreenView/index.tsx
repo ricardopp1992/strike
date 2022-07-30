@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { KeyboardAvoidingView, Text, View } from 'react-native'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
@@ -6,13 +6,14 @@ import { PrimaryButton } from '@/components/Buttons'
 import { BottomSheet } from '@/components/BottomSheet'
 import CounterItemList from '@/pages/NewCounter/components/ItemsList'
 import NewItemForm from '@/pages/NewCounter/components/NewItemForm'
-import styles from './styles'
-import { CounterStackScreens, NewCounterScreenProps } from '@/interfaces'
+import { CounterStackScreens, CountItem, NewCounterScreenProps } from '@/interfaces'
 import { useCounterContext } from '../../hooks'
+import styles from './styles'
 
 const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   const sheetRef = useRef<BottomSheetBehavior>(null)
-  const { counterState } = useCounterContext()
+  const [disableStart, setDisableStart] = useState(true)
+  const { counterState, setCounterItemId } = useCounterContext()
 
   const openNewEntryForm = () => sheetRef.current?.snapTo(1)
 
@@ -24,16 +25,21 @@ const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
     navigation.navigate(CounterStackScreens.COUNTER_SCREEN, counterState.itemsCounter)
   }
 
+  useEffect(() => {
+    const disableStartCounter: boolean = counterState.itemsCounter.length === 0
+    setDisableStart(disableStartCounter)
+  }, [counterState.itemsCounter])
+
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Counter Items</Text>
-        <CounterItemList />
+        <CounterItemList openNewEntryForm={openNewEntryForm} />
         <PrimaryButton onPress={openNewEntryForm}>
           +
         </PrimaryButton>
         <View style={styles.startCountingButton}>
-          <PrimaryButton onPress={onNavigateToCounter}>
+          <PrimaryButton disabled={disableStart} onPress={onNavigateToCounter}>
             Start Counting
           </PrimaryButton>
         </View>

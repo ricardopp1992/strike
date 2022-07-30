@@ -7,6 +7,13 @@ export default StyleSheet.create({
   },
   itemBox: {
     width: '80%',
+    position: 'relative',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '4%',
+  },
+  itemInfoBox: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -16,5 +23,11 @@ export default StyleSheet.create({
   },
   textItem: {
     fontSize: 17,
+  },
+  editButton: {
+    marginRight: '5%',
+  },
+  editIcon: {
+    fontSize: 20,
   }
 })

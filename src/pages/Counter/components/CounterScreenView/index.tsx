@@ -14,7 +14,6 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
   useEffect(() => {
     initItems(items)
   }, [])
-  
 
   return (
     <ScrollView style={styles.container}>
