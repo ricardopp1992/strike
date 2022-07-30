@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Text, TextInput, View, Keyboard } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -55,8 +55,6 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
   useEffect(() => {
     const itemToEdit = itemsCounter
       .find(({ id }) => id === itemToEditId)
-
-    console.log(itemToEdit, itemToEditId);
 
     if (typeof itemToEditId !== 'undefined' && itemToEdit) {
       setItemIcon(itemToEdit.itemIcon)
