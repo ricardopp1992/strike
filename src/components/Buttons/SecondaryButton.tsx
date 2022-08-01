@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { ButtonProps } from '@/interfaces/components.interface'
 import { normalTheme } from '@/theme'
 
-export const PrimaryButton: FC<ButtonProps> = ({ children, textStyle = {}, style, ...options }) => {
+export const SecondaryButton: FC<ButtonProps> = ({ children, textStyle = {}, style, ...options }) => {
   return (
     <TouchableOpacity
       style={[

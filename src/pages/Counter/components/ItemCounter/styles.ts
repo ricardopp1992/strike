@@ -5,7 +5,7 @@ const fontSize = 25
 
 export default StyleSheet.create({
   container: {
-    marginTop: '4%',
+    marginBottom: '3%',
     paddingVertical: '3%',
     marginHorizontal: '2%',
     paddingHorizontal: '5%',
