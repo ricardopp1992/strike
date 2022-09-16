@@ -40,7 +40,7 @@ const primaryButtonStyles = StyleSheet.create({
     borderWidth: normalTheme.borderWidth,
     borderColor: normalTheme.borderColor,
     borderRadius: normalTheme.borderRadius,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
 })

@@ -1,11 +1,13 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { CountItem } from '@/pages/NewCounter/interfaces'
+import { CountItem } from '@/interfaces'
+import { DrawerScreenProps } from '@react-navigation/drawer'
+import { NavigatorScreenParams, ParamListBase } from '@react-navigation/native'
 
 export type DrawerMenuRoot = {
-  homeScreen: undefined,
+  homeScreen: { items: CountItem[] } | undefined,
   historyScreen: undefined,
-  CounterStackNavigator: undefined
+  CounterStackNavigator: NavigatorScreenParams<ParamListBase>,
 }
 
 export enum DrawerMenuScreens {
@@ -28,4 +30,7 @@ export interface CounterScreenProps extends NativeStackScreenProps<CounterStackR
 }
 
 export interface NewCounterScreenProps extends NativeStackScreenProps<CounterStackRoot, CounterStackScreens.NEW_COUNTER_SCREEN> {
+}
+
+export interface HomeScreenProps extends DrawerScreenProps<DrawerMenuRoot, DrawerMenuScreens.HOME_SCREEN> {
 }

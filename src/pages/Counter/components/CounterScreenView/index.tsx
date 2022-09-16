@@ -1,16 +1,16 @@
 import React, { FC, useEffect, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Modal, Text, TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 
-import { CounterScreenProps, CountItem } from '@/interfaces'
-import ItemCounter from '../ItemCounter'
-import { useItemsCounterContext } from '../../hooks'
 import { PrimaryButton } from '@/components/Buttons'
-import styles from './styles'
 import ConfirmationAlert from '@/components/ConfirmationAlert'
+import ItemCounter from '../ItemCounter'
+import { CounterScreenProps, CountItem, DrawerMenuScreens } from '@/interfaces'
+import { useItemsCounterContext } from '../../hooks'
+import styles from './styles'
 
-const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
-  const items: CountItem[] = new Array(...route.params)
+const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
+  const items: CountItem[] = new Array(...route.params || [])
   const { countItems, initItems } = useItemsCounterContext()
   const [showModal, setShowModal] = useState(false)
 
@@ -22,11 +22,16 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
 
   const onHandleDismiss = () => {
     setShowModal(false)
+    navigateToHome()
   }
 
   const onHandleConfirm = () => {
     setShowModal(false)
+    navigateToHome()
   }
+
+  const navigateToHome = () => navigation.getParent()
+    ?.navigate(DrawerMenuScreens.HOME_SCREEN, { items: countItems.items })
 
   return (
     <View>
@@ -54,7 +59,7 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route }) => {
         alertMessage="Would you like to preserve the counter for next time or reset?"
         confirmText="Preserve my count"
         cancelText="Reset count"
-        onConfirm={() => {}}
+        onConfirm={onHandleConfirm}
         onDismiss={onHandleDismiss}
       />
     </View>

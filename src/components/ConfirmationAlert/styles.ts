@@ -4,8 +4,8 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   viewContainer: {
     height: '30%',
-    width: '95%',
-    left: '3%',
+    width: '96%',
+    left: '2%',
     borderRadius: normalTheme.borderRadius,
     marginTop: '50%',
     padding: '5%',
