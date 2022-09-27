@@ -4,13 +4,13 @@ import { View } from 'react-native'
 
 import { PrimaryButton } from '@/components/Buttons'
 import ConfirmationAlert from '@/components/ConfirmationAlert'
-import ItemCounter from '../ItemCounter'
 import { CounterScreenProps, CountItem, DrawerMenuScreens } from '@/interfaces'
+import ItemCounter from '../ItemCounter'
 import { useItemsCounterContext } from '../../hooks'
 import styles from './styles'
 
 const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
-  const items: CountItem[] = new Array(...route.params || [])
+  const items: CountItem[] = new Array(...(route.params.params as CountItem[]) || [])
   const { countItems, initItems } = useItemsCounterContext()
   const [showModal, setShowModal] = useState(false)
 
@@ -22,16 +22,18 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
 
   const onHandleDismiss = () => {
     setShowModal(false)
-    navigateToHome()
+    navigateToHome(false)
   }
 
   const onHandleConfirm = () => {
     setShowModal(false)
-    navigateToHome()
+    navigateToHome(true)
   }
 
-  const navigateToHome = () => navigation.getParent()
-    ?.navigate(DrawerMenuScreens.HOME_SCREEN, { items: countItems.items })
+  const navigateToHome = (preserve: boolean) => {
+    navigation.getParent()
+      ?.navigate(DrawerMenuScreens.HOME_SCREEN, { items: preserve ? countItems.items : null })
+  }
 
   return (
     <View>

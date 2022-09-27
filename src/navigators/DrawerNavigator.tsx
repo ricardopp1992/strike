@@ -15,8 +15,8 @@ export const DrawerNavigator = () => {
         headerShown: false,
       }}
     >
-      <Screen name={DrawerMenuScreens.COUNTER_STACK} component={CounterNavigator} />
       <Screen name={DrawerMenuScreens.HOME_SCREEN} component={HomeScreen} />
+      <Screen name={DrawerMenuScreens.COUNTER_STACK} component={CounterNavigator} />
       <Screen name={DrawerMenuScreens.HISTORY_SCREEN} component={HistoryScreen} />
     </Navigator>
   )

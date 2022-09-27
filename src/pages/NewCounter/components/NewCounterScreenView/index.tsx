@@ -22,7 +22,7 @@ const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   }
 
   const onNavigateToCounter = () => {
-    navigation.navigate(CounterStackScreens.COUNTER_SCREEN, counterState.itemsCounter)
+    navigation.navigate(CounterStackScreens.COUNTER_SCREEN, { params: counterState.itemsCounter, screen: '' })
   }
 
   useEffect(() => {

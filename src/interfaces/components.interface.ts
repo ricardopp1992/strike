@@ -1,6 +1,8 @@
-import {ModalProps, TouchableWithoutFeedbackProps, ViewProps } from 'react-native'
+import {TouchableWithoutFeedbackProps, ViewProps } from 'react-native'
 import { StyleProps } from 'react-native-reanimated'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
+
+import { ICounterItemsValues } from '@/interfaces'
 
 export interface ButtonProps extends ViewProps, TouchableWithoutFeedbackProps {
   textStyle?: StyleProps,
@@ -20,4 +22,13 @@ export interface IConformationAlertProps {
   visible: boolean
   onConfirm: () => void
   onDismiss?: () => void
+}
+
+export interface HomeViewProps {
+  navigatoToNewCounter: () => void
+  oldCounter: ICounterItemsValues[]
+}
+
+export interface OptionListProps {
+  oldCounter: ICounterItemsValues[]
 }
