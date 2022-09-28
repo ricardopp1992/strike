@@ -19,6 +19,7 @@ export enum NewCounterTypes {
   ADD_ITEM,
   REMOVE_ITEM,
   EDIT_ITEM,
+  CLEAR_COUNTER_ITEMS,
   SET_ITEM_TO_EDIT,
   SET_ITEM_TO_EDIT_ID,
 }
@@ -48,4 +49,8 @@ export type SetEditItemIdAction = {
   payload: string | undefined;
 }
 
-export type PayloadNewCounterAction = AddItemAction | RemoveItemAction | EditItemAction | SetEditItemAction | SetEditItemIdAction
+export type ClearItemsAction = {
+  type: NewCounterTypes.CLEAR_COUNTER_ITEMS,
+}
+
+export type PayloadNewCounterAction = AddItemAction | RemoveItemAction | EditItemAction | SetEditItemAction | SetEditItemIdAction | ClearItemsAction

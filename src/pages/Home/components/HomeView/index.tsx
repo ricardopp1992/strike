@@ -16,8 +16,14 @@ const HomeView: FC<HomeViewProps> = ({ navigatoToNewCounter, oldCounter }) => {
           Start New Count
         </PrimaryButton>
       </View>
-      <Text style={styles.prevCountText}>Prev count:</Text>
-      <OptionsList oldCounter={oldCounter} />
+      {
+        oldCounter.length > 0 && (
+          <>
+            <Text style={styles.prevCountText}>Prev count:</Text>
+            <OptionsList oldCounter={oldCounter} />
+          </>
+        )
+      }
     </View>
   )
 }

@@ -27,6 +27,8 @@ function reducerCounter(state: NewCounterSate, action: PayloadNewCounterAction):
       })
 
       return { ...state, itemsCounter }
+    case NewCounterTypes.CLEAR_COUNTER_ITEMS:
+      return { ...state, itemsCounter: [] }
     case NewCounterTypes.SET_ITEM_TO_EDIT_ID:
       return { ...state, itemToEditId: action.payload }
     default:

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import { View } from 'react-native'
+import { BackHandler, View } from 'react-native'
 
 import { PrimaryButton } from '@/components/Buttons'
 import ConfirmationAlert from '@/components/ConfirmationAlert'
@@ -14,8 +14,16 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
   const { countItems, initItems } = useItemsCounterContext()
   const [showModal, setShowModal] = useState(false)
 
+
   useEffect(() => {
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
+      displayCloseCounterConfirmation()
+      return true
+    })
+
     initItems(items)
+
+    return () => backHandler.remove()
   }, [])
 
   const displayCloseCounterConfirmation = () => setShowModal(true)

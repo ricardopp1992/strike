@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 import { CounterItemsContext } from '../context'
 import { NewCounterTypes } from '../interfaces'
@@ -26,11 +26,16 @@ export const useCounterContext = () => {
     dispatch({ type: NewCounterTypes.SET_ITEM_TO_EDIT_ID, payload: id })
   }
 
+  const clearItems = () => {
+    dispatch({ type: NewCounterTypes.CLEAR_COUNTER_ITEMS })
+  }
+
   return {
     counterState,
     addNewCounterItem,
     editCounterItem,
     setCounterItemToEdit,
     setCounterItemId,
+    clearItems,
   }
 }

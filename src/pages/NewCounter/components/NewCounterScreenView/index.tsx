@@ -6,14 +6,14 @@ import { PrimaryButton } from '@/components/Buttons'
 import { BottomSheet } from '@/components/BottomSheet'
 import CounterItemList from '@/pages/NewCounter/components/ItemsList'
 import NewItemForm from '@/pages/NewCounter/components/NewItemForm'
-import { CounterStackScreens, CountItem, NewCounterScreenProps } from '@/interfaces'
+import { CounterStackScreens, NewCounterScreenProps } from '@/interfaces'
 import { useCounterContext } from '../../hooks'
 import styles from './styles'
 
 const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   const sheetRef = useRef<BottomSheetBehavior>(null)
   const [disableStart, setDisableStart] = useState(true)
-  const { counterState, setCounterItemId } = useCounterContext()
+  const { counterState } = useCounterContext()
 
   const openNewEntryForm = () => sheetRef.current?.snapTo(1)
 
