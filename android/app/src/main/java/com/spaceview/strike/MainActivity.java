@@ -1,4 +1,4 @@
-package com.strike;
+package com.spaceview.strike;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

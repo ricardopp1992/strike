@@ -1,4 +1,4 @@
-package com.strike.newarchitecture;
+package com.spaceview.strike.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.strike.BuildConfig;
-import com.strike.newarchitecture.components.MainComponentsRegistry;
-import com.strike.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.spaceview.strike.BuildConfig;
+import com.spaceview.strike.newarchitecture.components.MainComponentsRegistry;
+import com.spaceview.strike.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

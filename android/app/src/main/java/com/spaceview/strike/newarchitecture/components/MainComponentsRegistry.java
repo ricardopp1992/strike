@@ -1,4 +1,4 @@
-package com.strike.newarchitecture.components;
+package com.spaceview.strike.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
