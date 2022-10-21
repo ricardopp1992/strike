@@ -1,15 +1,20 @@
+const primaryColor = "#1480FF"
 const grayColor = '#f1f1f1'
 const lightGray = '#b1b1b1'
+const lightBlue = "#BCDAFF"
 
 export const normalTheme = {
   toastBackground: grayColor,
-  selectedBackground: '#f1f1f1',
+  background: '#fff',
+  selectedBackground: lightBlue,
+  primaryColor,
 
-  borderWidth: .9,
-  borderColor: '#888686',
+  borderWidth: 1,
+  borderColor: primaryColor,
   borderRadius: 10,
 
-  disableColor: lightGray,
+  disableColor: lightBlue,
+  modalBackground: lightBlue,
 
   grayColor,
 }

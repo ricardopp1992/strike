@@ -1,3 +1,4 @@
+import { normalTheme } from "@/theme";
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     position: 'absolute',
     padding: '5%',
     borderRadius: 10,
-    backgroundColor: '#c9c6c6',
+    backgroundColor: normalTheme.modalBackground,
     width: '90%',
     top: '3%',
     left: '5%',
@@ -27,5 +28,6 @@ export default StyleSheet.create({
   },
   closeToast: {
     fontSize: 20,
+    color: normalTheme.primaryColor,
   }
 })

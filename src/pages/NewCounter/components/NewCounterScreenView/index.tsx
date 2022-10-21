@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { KeyboardAvoidingView, Text, View } from 'react-native'
+import { KeyboardAvoidingView, View } from 'react-native'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
 import { PrimaryButton } from '@/components/Buttons'
 import { BottomSheet } from '@/components/BottomSheet'
 import CounterItemList from '@/pages/NewCounter/components/ItemsList'
 import NewItemForm from '@/pages/NewCounter/components/NewItemForm'
+import HeadingText from '@/components/Texts/HeadingText'
 import { CounterStackScreens, NewCounterScreenProps } from '@/interfaces'
 import { useCounterContext } from '../../hooks'
 import styles from './styles'
@@ -33,7 +34,7 @@ const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.title}>Counter Items</Text>
+        <HeadingText style={styles.title}>Counter Items</HeadingText>
         <CounterItemList openNewEntryForm={openNewEntryForm} />
         <PrimaryButton onPress={openNewEntryForm}>
           +

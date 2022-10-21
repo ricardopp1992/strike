@@ -29,16 +29,17 @@ const primaryButtonStyles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     fontWeight: '500',
+    color: normalTheme.primaryColor,
   },
   disableButton: {
-    borderColor: normalTheme.disableColor,
+    borderColor: normalTheme.selectedBackground,
   },
   disableText: {
-    color: normalTheme.disableColor
+    color: normalTheme.selectedBackground
   },
   button: {
     borderWidth: normalTheme.borderWidth,
-    borderColor: normalTheme.borderColor,
+    borderColor: normalTheme.primaryColor,
     borderRadius: normalTheme.borderRadius,
     paddingVertical: 10,
     paddingHorizontal: 15,

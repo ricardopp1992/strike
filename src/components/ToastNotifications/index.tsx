@@ -1,15 +1,16 @@
 import React from 'react'
-import { Text, View, ViewStyle } from 'react-native'
+import { View, ViewStyle } from 'react-native'
 
 import { useToastContext } from '@/context/toastContext'
 import styles from './styles'
 import { ToastType } from '@/interfaces'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { SimpleText } from '../Texts'
 
 
 const ToastNotifications = () => {
   const { toastState, closeToast } = useToastContext()
-  const { ERROR, MESSAGE, SUCCESS, WARNING } = ToastType
+  const { ERROR } = ToastType
   let toastBoxStyle: ViewStyle = {}
 
   if (!toastState.text) {
@@ -28,7 +29,7 @@ const ToastNotifications = () => {
 
   return (
     <View style={[styles.toastBox, toastBoxStyle]}>
-      <Text>{message}</Text>
+      <SimpleText>{message}</SimpleText>
       <Icon style={styles.closeToast} onPress={closeToast} name="close-circle-outline" />
     </View>
   )

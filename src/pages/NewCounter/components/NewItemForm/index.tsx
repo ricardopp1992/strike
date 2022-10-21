@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Text, TextInput, View, Keyboard } from 'react-native'
+import { TextInput, View, Keyboard } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -10,6 +10,7 @@ import ioniconsList from './listIcons'
 import styles from './styles'
 import { useToastContext } from '@/context/toastContext'
 import { CountItem } from '@/interfaces'
+import { SimpleText } from '@/components/Texts'
 
 const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
   const [itemName, setItemName] = useState('')
@@ -64,14 +65,14 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Name List</Text>
+      <SimpleText style={styles.nameLabel}>Name List</SimpleText>
       <TextInput
         value={itemName}
+        style={styles.inputName}
         onChangeText={onChangeTextInput}
         placeholder="Item name"
       />
-
-      <Text>Choose an icon for the item</Text>
+      <SimpleText style={styles.itemLabel}>Choose an icon for the item</SimpleText>
       <View style={styles.iconsContainer}>
         <FlatList
           numColumns={7}

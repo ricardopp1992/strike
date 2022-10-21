@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
-import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 import { ButtonProps } from '@/interfaces/components.interface'
 import { normalTheme } from '@/theme'
+import { SimpleText } from '../Texts'
 
 export const SecondaryButton: FC<ButtonProps> = ({ children, textStyle = {}, style, ...options }) => {
   return (
@@ -14,13 +15,13 @@ export const SecondaryButton: FC<ButtonProps> = ({ children, textStyle = {}, sty
       ]}
       {...options}
     >
-      <Text
+      <SimpleText
         style={[
           primaryButtonStyles.buttonText,
           textStyle,
           options.disabled && primaryButtonStyles.disableText
         ]}
-      >{children}</Text>
+      >{children}</SimpleText>
     </TouchableOpacity>
   )
 }

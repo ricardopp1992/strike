@@ -9,7 +9,6 @@ export default StyleSheet.create({
     paddingVertical: '3%',
     marginHorizontal: '2%',
     paddingHorizontal: '5%',
-    height: 160,
     borderColor: normalTheme.borderColor,
     borderWidth: normalTheme.borderWidth,
     borderRadius: normalTheme.borderRadius,
@@ -25,6 +24,7 @@ export default StyleSheet.create({
   icon: {
     fontSize,
     paddingTop: 2,
+    color: normalTheme.primaryColor,
   },
   name: {
     fontSize,

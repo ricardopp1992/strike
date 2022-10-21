@@ -10,7 +10,7 @@ export default StyleSheet.create({
     marginTop: '50%',
     padding: '5%',
     justifyContent: 'space-evenly',
-    backgroundColor: '#fff'
+    backgroundColor: normalTheme.modalBackground
   },
   headerText: {
     fontWeight: '500',

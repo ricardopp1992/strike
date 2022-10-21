@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
-import { Modal, Text, View } from 'react-native'
+import { Modal, View } from 'react-native'
 
 import { IConformationAlertProps } from '@/interfaces'
 import styles from './styles'
 import { SecondaryButton } from '../Buttons/SecondaryButton'
+import { SimpleText } from '../Texts'
+import HeadingText from '../Texts/HeadingText'
 
 const ConfirmationAlert: FC<IConformationAlertProps> = ({
   customStyles,
@@ -23,8 +25,8 @@ const ConfirmationAlert: FC<IConformationAlertProps> = ({
       statusBarTranslucent={true}
     >
       <View style={[styles.viewContainer, customStyles]}>
-        <Text style={styles.headerText}>{headerText}</Text>
-        <Text>{alertMessage}</Text>
+        <HeadingText style={styles.headerText}>{headerText}</HeadingText>
+        <SimpleText>{alertMessage}</SimpleText>
         <View style={styles.actionButtons}>
           <SecondaryButton onPress={onConfirm}>{confirmText}</SecondaryButton>
           <SecondaryButton onPress={onDismiss}>{cancelText}</SecondaryButton>

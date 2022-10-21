@@ -1,6 +1,6 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack'
 import { DrawerScreenProps } from '@react-navigation/drawer'
-import { CompositeScreenProps, NavigatorScreenParams, ParamListBase } from '@react-navigation/native'
+import { CompositeNavigationProp, CompositeScreenProps, NavigatorScreenParams, ParamListBase } from '@react-navigation/native'
 
 import { ICounterItemsValues } from '@/interfaces'
 
@@ -34,13 +34,16 @@ export interface NewCounterScreenProps extends NativeStackScreenProps<CounterSta
 
 export type HomeScreenProps = CompositeScreenProps<
   DrawerScreenProps<DrawerMenuRoot, DrawerMenuScreens.HOME_SCREEN>,
-  NativeStackScreenProps<DrawerMenuRoot, DrawerMenuScreens.HOME_SCREEN>
+  NativeStackScreenProps<DrawerMenuRoot, DrawerMenuScreens.COUNTER_STACK>
 >
+
+export type HomeNavigation = CompositeNavigationProp<
+      NativeStackNavigationProp<DrawerMenuRoot, "homeScreen">,
+      NativeStackNavigationProp<DrawerMenuRoot, "CounterStackNavigator">
+    >
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends DrawerMenuRoot {}
+    interface RootParamList extends DrawerMenuRoot { }
   }
 }
-
-  // extends DrawerScreenProps<DrawerMenuRoot, DrawerMenuScreens.HOME_SCREEN> {

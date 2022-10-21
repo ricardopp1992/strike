@@ -1,16 +1,18 @@
 import React, { FC } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { PrimaryButton } from '@/components/Buttons'
 import { HomeViewProps } from '@/interfaces'
 import OptionsList from '../OptionsList'
 
 import styles from './styles'
+import HeadingText from '@/components/Texts/HeadingText'
+import { SimpleText } from '@/components/Texts'
 
 const HomeView: FC<HomeViewProps> = ({ navigatoToNewCounter, oldCounter }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to Strikpe app</Text>
+      <HeadingText style={styles.welcomeText}>Welcome to Strikpe app</HeadingText>
       <View>
         <PrimaryButton onPress={navigatoToNewCounter}>
           Start New Count
@@ -19,7 +21,7 @@ const HomeView: FC<HomeViewProps> = ({ navigatoToNewCounter, oldCounter }) => {
       {
         oldCounter.length > 0 && (
           <>
-            <Text style={styles.prevCountText}>Prev count:</Text>
+            <SimpleText style={styles.prevCountText}>Prev count:</SimpleText>
             <OptionsList oldCounter={oldCounter} />
           </>
         )

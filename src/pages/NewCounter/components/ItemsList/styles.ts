@@ -1,3 +1,4 @@
+import { normalTheme } from "@/theme";
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
@@ -20,14 +21,17 @@ export default StyleSheet.create({
   icon: {
     fontSize: 30,
     marginRight: '5%',
+    color: normalTheme.primaryColor
   },
   textItem: {
     fontSize: 17,
   },
   editButton: {
     marginRight: '5%',
+    color: normalTheme.primaryColor
   },
   editIcon: {
     fontSize: 20,
+    color: normalTheme.primaryColor
   }
 })

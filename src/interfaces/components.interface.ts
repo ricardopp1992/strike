@@ -1,4 +1,4 @@
-import {TouchableWithoutFeedbackProps, ViewProps } from 'react-native'
+import {TextProps, TouchableWithoutFeedbackProps, ViewProps } from 'react-native'
 import { StyleProps } from 'react-native-reanimated'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
@@ -31,4 +31,8 @@ export interface HomeViewProps {
 
 export interface OptionListProps {
   oldCounter: ICounterItemsValues[]
+}
+
+export interface HeadingProps extends TextProps {
+
 }

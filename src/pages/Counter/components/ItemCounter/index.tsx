@@ -1,6 +1,7 @@
 import { PrimaryButton } from '@/components/Buttons'
+import { SimpleText } from '@/components/Texts'
 import React, { FC } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useItemsCounterContext } from '../../hooks'
 
@@ -23,11 +24,11 @@ const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value, id }) => {
     <View style={styles.container}>
       <View style={styles.iconBox}>
         <Icon style={styles.icon} name={icon} />
-        <Text style={styles.name}>{name}</Text>
+        <SimpleText style={styles.name}>{name}</SimpleText>
       </View>
       <View style={styles.controls}>
         <PrimaryButton onPress={handleAddClick} style={styles.buttons}>+</PrimaryButton>
-        <Text style={styles.value}>{value}</Text>
+        <SimpleText style={styles.value}>{value}</SimpleText>
         <PrimaryButton
           disabled={!enableDecrease}
           onPress={enableDecrease && handleDecreaseClick}
