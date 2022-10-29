@@ -25,7 +25,7 @@ export interface IConformationAlertProps {
 }
 
 export interface HomeViewProps {
-  navigatoToNewCounter: () => void
+  navigateToToNewCounter: () => void
   oldCounter: ICounterItemsValues[]
 }
 

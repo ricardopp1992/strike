@@ -14,7 +14,7 @@ export const HomeScreen: FC<HomeScreenProps> = ({ navigation, route }) => {
 
   return (
     <HomeView
-      navigatoToNewCounter={navigateToNewCounterFormScreen}
+      navigateToToNewCounter={navigateToNewCounterFormScreen}
       oldCounter={preservedOldCounter}
     />
 

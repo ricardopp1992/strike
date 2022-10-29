@@ -1,6 +1,8 @@
-Short description: Counter for whatever you like or need to keep a record
+## Short description:
+Counter for whatever you like or need to keep a record
 
-Full description: This counter will help you to have a count record for different items you might follow along.
+## Full description:
+This counter will help you to have a count record for different items you might follow along.
 
 You can user whatever name you like to call the item you are counting, also assign a icon to differentiate from others.
 

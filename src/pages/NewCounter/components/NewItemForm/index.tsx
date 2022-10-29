@@ -65,14 +65,14 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
 
   return (
     <View style={styles.container}>
-      <SimpleText style={styles.nameLabel}>Name List</SimpleText>
+      <SimpleText style={styles.nameLabel}>Name List*</SimpleText>
       <TextInput
         value={itemName}
         style={styles.inputName}
         onChangeText={onChangeTextInput}
         placeholder="Item name"
       />
-      <SimpleText style={styles.itemLabel}>Choose an icon for the item</SimpleText>
+      <SimpleText style={styles.itemLabel}>Choose an icon for the item*</SimpleText>
       <View style={styles.iconsContainer}>
         <FlatList
           numColumns={7}
