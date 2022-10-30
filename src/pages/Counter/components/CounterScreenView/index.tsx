@@ -1,19 +1,20 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import type { FC } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import { BackHandler, View } from 'react-native'
+import { BackHandler, NativeEventSubscription, View } from 'react-native'
 
 import { PrimaryButton } from '@/components/Buttons'
 import ConfirmationAlert from '@/components/ConfirmationAlert'
-import { CounterScreenProps, CountItem, DrawerMenuScreens } from '@/interfaces'
+import { CounterScreenProps, CountItem, DrawerMenuScreens, IPreserveCount } from '@/interfaces'
 import ItemCounter from '../ItemCounter'
 import { useItemsCounterContext } from '../../hooks'
 import styles from './styles'
 
 const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
-  const items: CountItem[] = new Array(...(route.params.params as CountItem[]) || [])
+  const items = (route.params.params || route.params) as CountItem[] | IPreserveCount
+  const backHandlerEventRef = useRef<NativeEventSubscription>()
   const { countItems, initItems } = useItemsCounterContext()
   const [showModal, setShowModal] = useState(false)
-
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -21,10 +22,17 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
       return true
     })
 
-    initItems(items)
+    backHandlerEventRef.current = backHandler
 
-    return () => backHandler.remove()
+    return () => removeBackHandlerEvent()
   }, [])
+
+  useEffect(() => {
+    const arrayTypeItem = Array.isArray(items) ? items : items.items
+    initItems(arrayTypeItem)
+  }, [items])
+
+  const removeBackHandlerEvent = () => backHandlerEventRef.current?.remove()
 
   const displayCloseCounterConfirmation = () => setShowModal(true)
 
@@ -39,8 +47,12 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
   }
 
   const navigateToHome = (preserve: boolean) => {
+    const id = Array.isArray(items) ? new Date().getTime() : items.id
+    const preservedItem = preserve ? { id , items: countItems.items } : undefined
+
+    removeBackHandlerEvent();
     navigation.getParent()
-      ?.navigate(DrawerMenuScreens.HOME_SCREEN, { items: preserve ? countItems.items : null })
+      ?.navigate(DrawerMenuScreens.HOME_SCREEN, preservedItem)
   }
 
   return (

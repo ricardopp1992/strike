@@ -20,14 +20,14 @@ const CounterItemList: FC<ICounterItemProps> = ({ openNewEntryForm }) => {
   return (
     <View style={styles.container}>
       {
-        counterState.itemsCounter.map(({ itemIcon, itemName, id }) =>
+        counterState.itemsCounter.map(({ itemIcon, itemName, id, value }) =>
           <View key={id} style={styles.itemBox}>
             <View style={styles.itemInfoBox}>
               <Icon name={itemIcon} style={styles.icon} />
               <SimpleText style={styles.textItem}>{itemName}</SimpleText>
             </View>
             <TouchableOpacity
-              onPress={() => handleEditItem({ itemIcon, itemName, id })}
+              onPress={() => handleEditItem({ itemIcon, itemName, id, value })}
               style={styles.editButton}
             >
               <Icon style={styles.editIcon} name="create-outline" />

@@ -2,10 +2,10 @@ import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-naviga
 import { DrawerScreenProps } from '@react-navigation/drawer'
 import { CompositeNavigationProp, CompositeScreenProps, NavigatorScreenParams, ParamListBase } from '@react-navigation/native'
 
-import { ICounterItemsValues } from '@/interfaces'
+import { IPreserveCount } from '@/interfaces'
 
 export type DrawerMenuRoot = {
-  homeScreen: { items: ICounterItemsValues[] } | undefined,
+  homeScreen: IPreserveCount | undefined,
   historyScreen: undefined,
   CounterStackNavigator: NavigatorScreenParams<ParamListBase>,
 }
@@ -26,11 +26,15 @@ export enum CounterStackScreens {
   COUNTER_SCREEN = 'counterScreen'
 }
 
-export interface CounterScreenProps extends NativeStackScreenProps<CounterStackRoot, CounterStackScreens.COUNTER_SCREEN> {
-}
+export type CounterScreenProps = CompositeScreenProps<
+  NativeStackScreenProps<CounterStackRoot, "counterScreen">,
+  DrawerScreenProps<DrawerMenuRoot, "homeScreen">
+>
 
-export interface NewCounterScreenProps extends NativeStackScreenProps<CounterStackRoot, CounterStackScreens.NEW_COUNTER_SCREEN> {
-}
+export type NewCounterScreenProps = CompositeScreenProps<
+  NativeStackScreenProps<CounterStackRoot, "newCounterScreen">,
+  DrawerScreenProps<DrawerMenuRoot, "homeScreen">
+>
 
 export type HomeScreenProps = CompositeScreenProps<
   DrawerScreenProps<DrawerMenuRoot, DrawerMenuScreens.HOME_SCREEN>,
@@ -38,9 +42,9 @@ export type HomeScreenProps = CompositeScreenProps<
 >
 
 export type HomeNavigation = CompositeNavigationProp<
-      NativeStackNavigationProp<DrawerMenuRoot, "homeScreen">,
-      NativeStackNavigationProp<DrawerMenuRoot, "CounterStackNavigator">
-    >
+  NativeStackNavigationProp<DrawerMenuRoot, "homeScreen">,
+  NativeStackNavigationProp<DrawerMenuRoot, "CounterStackNavigator">
+>
 
 declare global {
   namespace ReactNavigation {

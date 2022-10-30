@@ -5,15 +5,21 @@ import { useNavigation } from '@react-navigation/native'
 
 import { CounterStackScreens, DrawerMenuScreens, HomeNavigation, OptionListProps } from '@/interfaces'
 import { SecondaryButton } from '@/components/Buttons/SecondaryButton'
-import styles from './styles'
 import { SimpleText } from '@/components/Texts'
+import styles from './styles'
 
-const OptionsList: FC<OptionListProps> = ({ oldCounter }) => {
+const OptionsList: FC<OptionListProps> = ({ oldCounter, preservedId }) => {
   const navigation = useNavigation<HomeNavigation>()
 
   const navigateToCounterScreen = () => {
     navigation.navigate(DrawerMenuScreens.COUNTER_STACK,
-      { params: oldCounter, screen: CounterStackScreens.COUNTER_SCREEN }
+      {
+        params: {
+          id: preservedId,
+          items: oldCounter
+        },
+        screen: CounterStackScreens.COUNTER_SCREEN
+      }
     )
   }
 
@@ -21,8 +27,8 @@ const OptionsList: FC<OptionListProps> = ({ oldCounter }) => {
     <SecondaryButton style={styles.container} onPress={navigateToCounterScreen}>
       <View>
         {
-          oldCounter.map(({ itemName, value }) => (
-            <SimpleText key={`${itemName}-${value}`}>{itemName}: {value}</SimpleText>
+          oldCounter.map(({ itemName, value }, i) => (
+            <SimpleText key={`${itemName}-${i}`}>{itemName}: {value}</SimpleText>
           ))
         }
       </View>

@@ -2,7 +2,7 @@ import {TextProps, TouchableWithoutFeedbackProps, ViewProps } from 'react-native
 import { StyleProps } from 'react-native-reanimated'
 import BottomSheetBehavior from 'reanimated-bottom-sheet'
 
-import { ICounterItemsValues } from '@/interfaces'
+import { CountItem, IPreserveCount } from '@/interfaces'
 
 export interface ButtonProps extends ViewProps, TouchableWithoutFeedbackProps {
   textStyle?: StyleProps,
@@ -26,11 +26,12 @@ export interface IConformationAlertProps {
 
 export interface HomeViewProps {
   navigateToToNewCounter: () => void
-  oldCounter: ICounterItemsValues[]
+  oldCounter?: IPreserveCount[]
 }
 
 export interface OptionListProps {
-  oldCounter: ICounterItemsValues[]
+  preservedId: string
+  oldCounter: CountItem[]
 }
 
 export interface HeadingProps extends TextProps {

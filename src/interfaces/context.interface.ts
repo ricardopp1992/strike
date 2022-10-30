@@ -22,8 +22,10 @@ export type CountItem = {
   id: string
   itemName: string
   itemIcon: string
+  value: number
 }
 
-export interface ICounterItemsValues extends CountItem {
-  value: number;
+export interface IPreserveCount {
+  items: CountItem[],
+  id: string
 }

@@ -4,13 +4,13 @@ import { FlatList } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import { PrimaryButton } from '@/components/Buttons'
+import { SimpleText } from '@/components/Texts'
 import { NewItemFromProps } from '@/pages/NewCounter/interfaces'
 import { useCounterContext } from '@/pages/NewCounter/hooks'
-import ioniconsList from './listIcons'
-import styles from './styles'
 import { useToastContext } from '@/context/toastContext'
 import { CountItem } from '@/interfaces'
-import { SimpleText } from '@/components/Texts'
+import ioniconsList from './listIcons'
+import styles from './styles'
 
 const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
   const [itemName, setItemName] = useState('')
@@ -35,11 +35,11 @@ const NewItemForm: FC<NewItemFromProps> = ({ snapTo }) => {
     }
 
     if (itemToEditId) {
-      const updatedItem: CountItem = { id: itemToEditId, itemName, itemIcon }
+      const updatedItem: CountItem = { id: itemToEditId, itemName, itemIcon, value: 0 }
       editCounterItem(updatedItem)
     } else {
       const id = new Date().getTime().toString()
-      addNewCounterItem({ id, itemName, itemIcon })
+      addNewCounterItem({ id, itemName, itemIcon, value: 0 })
     }
 
     Keyboard.dismiss()

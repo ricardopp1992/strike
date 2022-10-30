@@ -1,20 +1,20 @@
 import React, { createContext, Dispatch, FC, useReducer } from 'react'
 
-import { ICounterItemsValues } from '@/interfaces'
+import { CountItem } from '@/interfaces'
 import { ItemsCounterActions, ItemsCounterTypes } from '../interfaces'
 
 export const ItemsCounterContext = createContext<[InitialCounter, Dispatch<ItemsCounterActions>] | null>(null)
 
-export type InitialCounter = { items: ICounterItemsValues[] }
+export type InitialCounter = { items: CountItem[] }
 
 const initialState: InitialCounter = {
   items: []
 }
 
 const itemsCounterReducer = (state: InitialCounter, action: ItemsCounterActions): InitialCounter => {
-  switch(action.type) {
+  switch (action.type) {
     case ItemsCounterTypes.SET_ITEMS:
-      const items = action.payload.map((item): ICounterItemsValues => ({ ...item, value: 0 }))
+      const items = action.payload.map((item): CountItem => ({ ...item, value: item.value || 0 }))
       return { ...state, items }
     case ItemsCounterTypes.ADD: {
       const itemId = action.payload
@@ -48,7 +48,7 @@ export const ItemsCounterProvider: FC = ({ children }) => {
 
   return (
     <ItemsCounterContext.Provider value={counterStore}>
-      { children }
+      {children}
     </ItemsCounterContext.Provider>
   )
 }
