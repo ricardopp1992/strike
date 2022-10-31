@@ -26,12 +26,14 @@ export default StyleSheet.create({
   textItem: {
     fontSize: 17,
   },
-  editButton: {
-    marginRight: '5%',
-    color: normalTheme.primaryColor
+  actionsBox: {
+    flexDirection: 'row',
   },
-  editIcon: {
+  actionButton: {
+    marginHorizontal: 10,
+  },
+  actionIcon: {
     fontSize: 20,
     color: normalTheme.primaryColor
-  }
+  },
 })

@@ -10,11 +10,15 @@ import styles from './styles'
 import { SimpleText } from '@/components/Texts'
 
 const CounterItemList: FC<ICounterItemProps> = ({ openNewEntryForm }) => {
-  const { counterState, setCounterItemId } = useCounterContext()
+  const { counterState, setCounterItemId, removeItem } = useCounterContext()
 
   const handleEditItem = (item: CountItem) => {
     setCounterItemId(item.id)
     openNewEntryForm()
+  }
+
+  const handleRemoveItem = (id: string) => {
+    removeItem(id);
   }
 
   return (
@@ -26,12 +30,20 @@ const CounterItemList: FC<ICounterItemProps> = ({ openNewEntryForm }) => {
               <Icon name={itemIcon} style={styles.icon} />
               <SimpleText style={styles.textItem}>{itemName}</SimpleText>
             </View>
-            <TouchableOpacity
-              onPress={() => handleEditItem({ itemIcon, itemName, id, value })}
-              style={styles.editButton}
-            >
-              <Icon style={styles.editIcon} name="create-outline" />
-            </TouchableOpacity>
+            <View style={styles.actionsBox}>
+              <TouchableOpacity
+                onPress={() => handleEditItem({ itemIcon, itemName, id, value })}
+                style={styles.actionButton}
+              >
+                <Icon style={styles.actionIcon} name="create-outline" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleRemoveItem(id)}
+                style={styles.actionButton}
+              >
+                <Icon style={styles.actionIcon} name="remove-circle-outline" />
+              </TouchableOpacity>
+            </View>
           </View>
         )
       }

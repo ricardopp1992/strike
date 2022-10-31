@@ -30,6 +30,10 @@ export const useCounterContext = () => {
     dispatch({ type: NewCounterTypes.CLEAR_COUNTER_ITEMS })
   }
 
+  const removeItem = (itemId: string) => {
+    dispatch({ type: NewCounterTypes.REMOVE_ITEM, payload: itemId })
+  }
+
   return {
     counterState,
     addNewCounterItem,
@@ -37,5 +41,6 @@ export const useCounterContext = () => {
     setCounterItemToEdit,
     setCounterItemId,
     clearItems,
+    removeItem,
   }
 }
