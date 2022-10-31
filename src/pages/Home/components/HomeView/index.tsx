@@ -9,7 +9,7 @@ import OptionsList from '../OptionsList'
 
 import styles from './styles'
 
-const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter }) => {
+const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter, removePreviousCount }) => {
   return (
     <View style={styles.container}>
       <HeadingText style={styles.welcomeText}>Welcome to Easy Counter App</HeadingText>
@@ -28,6 +28,7 @@ const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter }) => 
                   key={`${oldCount.id}-${i}`}
                   preservedId={oldCount.id}
                   oldCounter={oldCount.items}
+                  removePreviousCount={removePreviousCount}
                 />)
             }
           </>

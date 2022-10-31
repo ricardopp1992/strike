@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import type { FC } from 'react'
 
 import {
@@ -15,7 +15,7 @@ export const HomeScreen: FC<HomeScreenProps> = ({ navigation, route }) => {
   const [oldCounter, setOldCounter] = useState<IPreserveCount[]>()
   const lastCounter: IPreserveCount | undefined = route.params
 
-  const getPreviousStoredItems = async () => {
+  const initPreviousStoredItems = async () => {
     try {
       const items = await getStoredData<IPreserveCount[]>(PREVIOUS_STORED_ITEMS)
       let storedItems: IPreserveCount[] = Array.isArray(items) ? items : []
@@ -41,26 +41,42 @@ export const HomeScreen: FC<HomeScreenProps> = ({ navigation, route }) => {
     }
   }
 
-  useEffect(() => {
-    if (
-      typeof oldCounter === 'undefined' ||
-      !oldCounter.some(prevCount => JSON.stringify(prevCount) === JSON.stringify(lastCounter))
-    ) {
-      getPreviousStoredItems()
-    }
-  }, [lastCounter])
-
-
   const navigateToNewCounterFormScreen = () => {
     navigation.navigate(DrawerMenuScreens.COUNTER_STACK,
       { screen: CounterStackScreens.NEW_COUNTER_SCREEN }
     )
   }
 
+  const removePreviousCount = useCallback((prevCounterId: string) => {
+    if (!oldCounter) return
+
+    const newStoredCount = oldCounter.filter(({ id }) => id !== prevCounterId)
+    setOldCounter(newStoredCount)
+    updatePreviousCounterStoredData(newStoredCount)
+  }, [oldCounter])
+
+  const updatePreviousCounterStoredData = async (updatedStoredCounter: IPreserveCount[]) => {
+    try {
+      await setStoreData(PREVIOUS_STORED_ITEMS, JSON.stringify(updatedStoredCounter))
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    if (
+      typeof oldCounter === 'undefined' ||
+      !oldCounter.some(prevCount => JSON.stringify(prevCount) === JSON.stringify(lastCounter))
+    ) {
+      initPreviousStoredItems()
+    }
+  }, [lastCounter])
+
   return (
     <HomeView
       navigateToToNewCounter={navigateToNewCounterFormScreen}
       oldCounter={oldCounter}
+      removePreviousCount={removePreviousCount}
     />
 
   )

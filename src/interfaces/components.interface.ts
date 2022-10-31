@@ -27,11 +27,13 @@ export interface IConformationAlertProps {
 export interface HomeViewProps {
   navigateToToNewCounter: () => void
   oldCounter?: IPreserveCount[]
+  removePreviousCount: (id: string) => void
 }
 
 export interface OptionListProps {
   preservedId: string
-  oldCounter: CountItem[]
+  oldCounter: CountItem[],
+  removePreviousCount: (id: string) => void
 }
 
 export interface HeadingProps extends TextProps {

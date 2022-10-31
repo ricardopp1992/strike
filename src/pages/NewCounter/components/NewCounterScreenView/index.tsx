@@ -14,7 +14,7 @@ import styles from './styles'
 const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
   const sheetRef = useRef<BottomSheetBehavior>(null)
   const [disableStart, setDisableStart] = useState(true)
-  const { counterState } = useCounterContext()
+  const { counterState, clearItems } = useCounterContext()
 
   const openNewEntryForm = () => sheetRef.current?.snapTo(1)
 
@@ -27,6 +27,7 @@ const NewCounterScreenView: FC<NewCounterScreenProps> = ({ navigation }) => {
       CounterStackScreens.COUNTER_SCREEN,
       { params: counterState.itemsCounter, screen: CounterStackScreens.COUNTER_SCREEN }
     )
+    clearItems()
   }
 
   useEffect(() => {

@@ -6,10 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import { CounterStackScreens, DrawerMenuScreens, HomeNavigation, OptionListProps } from '@/interfaces'
 import { PrimaryButton, SecondaryButton } from '@/components/Buttons'
-import { SimpleText } from '@/components/Texts'
 import styles from './styles'
 
-const OptionsList: FC<OptionListProps> = ({ oldCounter, preservedId }) => {
+const OptionsList: FC<OptionListProps> = ({ oldCounter, preservedId, removePreviousCount }) => {
   const navigation = useNavigation<HomeNavigation>()
 
   const navigateToCounterScreen = () => {
@@ -24,7 +23,9 @@ const OptionsList: FC<OptionListProps> = ({ oldCounter, preservedId }) => {
     )
   }
 
-  const removeCounter = () => { }
+  const removeCounter = () => {
+    removePreviousCount(preservedId)
+  }
 
   return (
     <View style={styles.listRow}>
@@ -32,7 +33,6 @@ const OptionsList: FC<OptionListProps> = ({ oldCounter, preservedId }) => {
         {
           oldCounter.map(({ itemName, value }, i) => (
             `${itemName} - ${value} ${i !== oldCounter.length - 1 ? '\n' : ''}`
-            // <SimpleText style={styles.text} key={`${itemName}-${i}`}>{itemName}: {value}</SimpleText>
           ))
         }
       </SecondaryButton>
