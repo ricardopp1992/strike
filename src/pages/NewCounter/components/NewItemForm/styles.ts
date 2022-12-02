@@ -20,9 +20,10 @@ export default StyleSheet.create({
   },
   inputName: {
     borderRadius: 10,
-    paddingVertical: 1,
-    paddingHorizontal: '5%',
+    paddingVertical: 7,
+    paddingHorizontal: 20,
     marginVertical: '1%',
+    width: '80%',
     color: normalTheme.primaryColor,
     backgroundColor: normalTheme.grayColor,
   },

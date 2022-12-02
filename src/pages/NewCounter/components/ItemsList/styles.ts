@@ -9,7 +9,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   itemBox: {
-    width: '80%',
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -27,9 +26,10 @@ export default StyleSheet.create({
   },
   textItem: {
     fontSize: 17,
+    maxWidth: '60%',
   },
   actionsBox: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   actionButton: {
     marginHorizontal: 10,

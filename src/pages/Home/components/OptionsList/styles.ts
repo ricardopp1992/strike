@@ -16,7 +16,8 @@ export default StyleSheet.create({
   container: {
     borderWidth: 0,
     flexWrap: 'nowrap',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '85%'
   },
   text: {
     fontSize: 15,
