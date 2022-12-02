@@ -27,8 +27,6 @@ const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value, id }) => {
         <SimpleText style={styles.name}>{name}</SimpleText>
       </View>
       <View style={styles.controls}>
-        <PrimaryButton onPress={handleAddClick} style={styles.buttons}>+</PrimaryButton>
-        <SimpleText style={styles.value}>{value}</SimpleText>
         <PrimaryButton
           disabled={!enableDecrease}
           onPress={enableDecrease && handleDecreaseClick}
@@ -36,6 +34,8 @@ const ItemCounter: FC<IItemCounterProps> = ({ name, icon, value, id }) => {
         >
           -
         </PrimaryButton>
+        <SimpleText style={styles.value}>{value}</SimpleText>
+        <PrimaryButton onPress={handleAddClick} style={styles.buttons}>+</PrimaryButton>
       </View>
     </View>
   )

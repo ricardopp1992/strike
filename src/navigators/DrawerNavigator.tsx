@@ -18,8 +18,11 @@ export const DrawerNavigator = () => {
         }
       }}
     >
-      <Screen name={DrawerMenuScreens.HOME_SCREEN} component={HomeScreen} />
-      <Screen name={DrawerMenuScreens.COUNTER_STACK} component={CounterNavigator} />
+      <Screen name={DrawerMenuScreens.HOME_SCREEN} options={{ drawerLabel: "Home" }} component={HomeScreen} />
+      <Screen
+        name={DrawerMenuScreens.COUNTER_STACK}
+        options={{ drawerLabel: "Create new counter" }}
+        component={CounterNavigator} />
     </Navigator>
   )
 }

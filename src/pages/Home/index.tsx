@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { FC } from 'react'
 
 import {
@@ -47,13 +47,13 @@ export const HomeScreen: FC<HomeScreenProps> = ({ navigation, route }) => {
     )
   }
 
-  const removePreviousCount = useCallback((prevCounterId: string) => {
+  const removePreviousCount = (prevCounterId: string) => {
     if (!oldCounter) return
 
     const newStoredCount = oldCounter.filter(({ id }) => id !== prevCounterId)
     setOldCounter(newStoredCount)
     updatePreviousCounterStoredData(newStoredCount)
-  }, [oldCounter])
+  }
 
   const updatePreviousCounterStoredData = async (updatedStoredCounter: IPreserveCount[]) => {
     try {
