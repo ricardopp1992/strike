@@ -13,7 +13,8 @@ const HomeViewStyles = StyleSheet.create({
     color: normalTheme.primaryColor,
   },
   prevCountText: {
-    marginTop: '5%'
+    marginTop: '5%',
+    marginBottom: '1%'
   }
   
 })

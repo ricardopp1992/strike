@@ -8,6 +8,9 @@ export default StyleSheet.create({
     marginVertical: '1%',
     alignSelf: 'flex-end'
   },
+  scrollViewContainer: {
+    height: '95%'
+  },
   textButton: {
     fontSize: 15
   }

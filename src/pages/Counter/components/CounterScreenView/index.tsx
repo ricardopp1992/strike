@@ -62,7 +62,7 @@ const CounterScreenView: FC<CounterScreenProps> = ({ route, navigation }) => {
         textStyle={styles.textButton}
         style={styles.closeButton}
       >x</PrimaryButton>
-      <ScrollView>
+      <ScrollView style={styles.scrollViewContainer}>
         {
           countItems.items.map(({ itemName, itemIcon, value, id }) =>
             <ItemCounter

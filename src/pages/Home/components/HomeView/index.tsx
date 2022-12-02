@@ -8,6 +8,7 @@ import { HomeViewProps } from '@/interfaces'
 import OptionsList from '../OptionsList'
 
 import styles from './styles'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter, removePreviousCount }) => {
   return (
@@ -22,6 +23,7 @@ const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter, remov
         oldCounter && oldCounter?.length > 0 && (
           <>
             <SimpleText style={styles.prevCountText}>Prev count:</SimpleText>
+            <ScrollView style={{ height: '40%' }}>
             {
               oldCounter?.map((oldCount, i) =>
                 <OptionsList
@@ -31,6 +33,7 @@ const HomeView: FC<HomeViewProps> = ({ navigateToToNewCounter, oldCounter, remov
                   removePreviousCount={removePreviousCount}
                 />)
             }
+            </ScrollView>
           </>
         )
       }

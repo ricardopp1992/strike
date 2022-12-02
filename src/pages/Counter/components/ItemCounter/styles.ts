@@ -1,5 +1,6 @@
-import { normalTheme } from "@/theme";
 import { StyleSheet } from "react-native";
+
+import { normalTheme } from "@/theme";
 
 const fontSize = 25
 
